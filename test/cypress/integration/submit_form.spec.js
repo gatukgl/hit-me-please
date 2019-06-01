@@ -1,10 +1,10 @@
 describe('Landing Page', () => {
   it('should be able to submit form with email', () => {
-    // const user = cy
-    // user.visit('http://localhost:8000/')
-    // user.get('h1').contains('Hit Me!')
-    // user.get('input[name="email"]').type('gatuk@prontomarketing.com')
-    // user.get('button[type="submit"]').click()
+    const user = cy
+    user.visit('http://localhost:8000/')
+    user.get('h1').contains('Hit Me!')
+    user.get('input[name="email"]').type('gatuk@prontomarketing.com')
+    user.get('button[type="submit"]').click()
 
     const admin = cy
     admin.visit('http://localhost:8000/admin/')
@@ -17,5 +17,15 @@ describe('Landing Page', () => {
       .click()
       .get('.field-email > a')
       .should('contain', 'gatuk@prontomarketing.com')
+
+    admin
+      .get('#action-toggle')
+      .click()
+      .get('select')
+      .select('delete_selected')
+      .get('.button')
+      .click()
+      .get('[type="submit"]')
+      .click()
   })
 })
