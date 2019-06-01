@@ -9,6 +9,6 @@ class LandingPageViewTest(TestCase):
         self.assertContains(response, expected, status_code=200)
         expected = '<input type="email">'
         self.assertContains(response, expected, status_code=200)
-        expected = '<input type="submit">Submit</input>'
+        expected = '<button type="submit">Submit</button>'
         self.assertContains(response, expected, status_code=200)
 
