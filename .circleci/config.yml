@@ -10,11 +10,11 @@ jobs:
           name: install dependencies
           command: |
             python3 -m venv ENV
-            . venv/bin/activate
+            . ENV/bin/activate
             pip install -r requirements.txt
 
       - run:
           name: run unit tests
           command: |
-            . venv/bin/activate
+            . ENV/bin/activate
             cd hit_me_please && python manage.py test
