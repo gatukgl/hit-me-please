@@ -1,5 +1,7 @@
 from django.test import TestCase
 
+from ..models import Hitter
+
 
 class LandingPageViewTest(TestCase):
     def test_view_should_have_form_with_email_field_and_submit_button(self):
@@ -7,8 +9,19 @@ class LandingPageViewTest(TestCase):
 
         expected = '<form action="." method="post">'
         self.assertContains(response, expected, status_code=200)
+        expected = '<input type="hidden" name="csrfmiddlewaretoken"'
+        self.assertContains(response, expected, status_code=200)
         expected = '<input type="email">'
         self.assertContains(response, expected, status_code=200)
         expected = '<button type="submit">Submit</button>'
         self.assertContains(response, expected, status_code=200)
 
+    def test_view_should_save_email_when_submit_form(self):
+        data = {'email': 'gatuk@prontomarketing.com'}
+
+        response = self.client.post('/', data=data)
+
+        self.assertEqual(response.status_code, 200)
+
+        count = Hitter.objects.filter(email='gatuk@prontomarketing.com').count()
+        self.assertEqual(count, 1)
