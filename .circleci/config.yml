@@ -26,6 +26,9 @@ jobs:
             docker build -t gatukgl/hitme:live .
             docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
             docker push gatukgl/hitme:live
+      - add_ssh_keys:
+          fingerprint: |
+            65:4d:dc:79:10:dd:de:05:96:00:44:de:ec:05:2b:32
       - run:
           name: deploy
           command: |
