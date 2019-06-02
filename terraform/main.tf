@@ -25,6 +25,8 @@ resource "google_compute_instance" "tf_instance" {
     network       = "default"
     access_config {}
   }
+
+  tags = ["my-web", "http-server", "https-server"]
 }
 
 output "ip" {
