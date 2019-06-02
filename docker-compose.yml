@@ -2,6 +2,6 @@ version: "3.7"
 
 services:
   app:
-    image: gatukgl/hitme:v2
+    image: gatukgl/hitme:live
     ports:
       - 80:8000
