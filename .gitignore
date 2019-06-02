@@ -1,5 +1,13 @@
+# Node
 */node_modules
 
+# Python
 ENV
 **/__pycache__/**
 **/db.sqlite3
+
+# Terraform
+**/.terraform/**
+**/terraform/*.json
+**/terraform/*.tfstate
+**/terraform/*.tfstate.*
