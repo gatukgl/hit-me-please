@@ -13,7 +13,7 @@ jobs:
             python3 -m venv ENV
             . ENV/bin/activate
             pip install -r requirements.txt
-
+            pip install ansible
       - run:
           name: run unit tests
           command: |
@@ -29,4 +29,5 @@ jobs:
       - run:
           name: deploy
           command: |
-            ansible-playbook -i hosts -v deploy.yml --extra-vars "project_path=~/WorkSpace/playground/ci-cd-workshop/hit-me-please"
+            cd ansible
+            ansible-playbook -i hosts -v deploy.yml --extra-vars "project_path=~/hitme"
