@@ -32,5 +32,6 @@ jobs:
       - run:
           name: deploy
           command: |
+            . ENV/bin/activate
             cd ansible
             ansible-playbook -i hosts -v deploy.yml --extra-vars "project_path=~/hitme"
