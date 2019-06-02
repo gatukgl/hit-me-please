@@ -24,5 +24,9 @@ jobs:
           name: build and push image
           command: |
             docker build -t gatukgl/hitme:live .
-            docker login -u="$DOCKER_USERNAME" -p="$DOCKERHUB_PASSWORD"
+            docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
             docker push gatukgl/hitme:live
+      - run:
+          name: deploy
+          command: |
+            ansible-playbook -i hosts -v deploy.yml --extra-vars "project_path=~/WorkSpace/playground/ci-cd-workshop/hit-me-please"
